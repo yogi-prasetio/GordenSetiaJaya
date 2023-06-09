@@ -359,21 +359,23 @@ class C_nilai extends CI_Controller
 		$pdf->Cell(0, 7, 'Laporan Data Penilaian', 0, 1, 'C');
 		$pdf->Cell(10, 7, '', 0, 1);
 		$pdf->SetFont('Arial', 'B', '16');
-		$pdf->Cell(0, 7, 'Periode ' . $periode, 0, 1, 'C');
+		$pdf->Cell(0, 7, 'Periode ' . date('F Y', strtotime($periode)), 0, 1, 'C');
 		$pdf->Cell(10, 7, '', 0, 1);
 
 		$pdf->SetFont('Arial', '', '14');
 
 		$pdf->Cell(12, 10, 'No', 1, 0, 'C');
-		$pdf->Cell(170, 10, 'Nama Resaller', 1, 0, 'C');
-		$pdf->Cell(90, 10, 'Nilai', 1, 1, 'C');
+		$pdf->Cell(70, 10, 'Nama Reseller', 1, 0, 'C');
+		$pdf->Cell(125, 10, 'Alamat', 1, 0, 'C');
+		$pdf->Cell(70, 10, 'Nilai', 1, 1, 'C');
 
 		$no = 1;
 		foreach ($nilai as $m) {
 			$pdf->Cell(12, 10, $no, 1, 0, 'C');
 			// $pdf->Cell(40,10,$pdf->Image('assets/gambar/'.$b->foto, $pdf->GetX()+10, $pdf->GetY()+2,15),1,0,'C');
-			$pdf->Cell(170, 10, $m->nama_resaller, 1, 0, 'C');
-			$pdf->Cell(90, 10, $m->nilai, 1, 1, 'C');
+			$pdf->Cell(70, 10, $m->nama_resaller, 1, 0, 'C');
+			$pdf->Cell(125, 10, $m->alamat, 1, 0, 'C');
+			$pdf->Cell(70, 10, $m->nilai, 1, 1, 'C');
 
 			$no++;
 		}
